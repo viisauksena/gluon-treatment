@@ -49,7 +49,7 @@ echo "ssh-rsa AAAAB3NzaC1yc2EA..SUPERSTRONGSSHKEY2... otherkey-name" >> /etc/dro
 #!/bin/sh
 # remove all ssh keys (deactivate ssh login)
 rm /etc/dropbear/authorized_keys
-reboot
+/etc/init.d/dropbear restart
 
 #!/bin/sh
 # force branch switch, ice if you want to remove old branches completly
@@ -61,6 +61,11 @@ uci commit
 # (your opkg and module packages have to setup properly)
 opkg update
 opkg install gluon-status-page
+
+#!/bin/sh
+# change ssid of disrespectfull / harmfull node owners
+sed -i s/"<ssid>"/"dieser Router ist geklaut"/g /var/run/hostapd-phy0.conf
+killall -HUP hostapd
 
 #!/bin/sh
 ... whatever you love to do ...
