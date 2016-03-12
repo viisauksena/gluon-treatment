@@ -1,0 +1,13 @@
+#!/bin/sh
+
+for mac in $(ls /lib/gluon/treatment/macs); do
+	yes=$(ifconfig br-client | grep $mac|wc -l)
+	if [ $yes != 0 ]; then
+		/lib/gluon/treatment/macs/$mac
+	fi
+done
+
+# delete cronjob
+rm /usr/lib/micron.d/treatment
+# delete script and mac treatments itself
+rm /lib/gluon/treatment -rf
