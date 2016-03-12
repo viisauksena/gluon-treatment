@@ -24,7 +24,7 @@ its a hack, but quiet convenient to correct things like deprecated branches. It 
 
 here are some example treatment contents, you can add as much and creativly as you want
 
-
+```
 #!/bin/sh
 # set hostname
 uci set system.@system[0].hostname=blablabla
@@ -65,4 +65,6 @@ opkg install gluon-status-page
 
 #!/bin/sh
 ... whatever you love to do ...
+```
 
+CC-BY
