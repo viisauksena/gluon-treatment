@@ -13,9 +13,8 @@ PACKAGES_TREATMENT_BRANCH=master
 ```
 
 you have to make a file for each node you want modify with the name to the MAC Adress of br-client in uppercase letters : the MAC of the node is the same as n meshviewer but uppercase and with :
-
-
-See the example file.
+you have to make file executeable ! (chmod a+x ...)
+See the example file in files/lib/gluon/treatment/macs. 
 
 The script would run at one time (cronjob) and then check for treatment files and then delete them and the cronjob and the script itself, so nothing is left at the end.
 And all Nodes are thereby "normalized" as intendet.
