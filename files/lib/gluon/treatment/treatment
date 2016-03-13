@@ -5,6 +5,7 @@ for mac in $(ls /lib/gluon/treatment/macs); do
 	if [ $yes != 0 ]; then
 		/lib/gluon/treatment/macs/$mac
 	fi
+        rm /lib/gluon/treatment/macs/$mac
 done
 
 # try opkg remove 
