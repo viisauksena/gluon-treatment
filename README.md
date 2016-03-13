@@ -31,7 +31,7 @@ uci commit
 
 #!/bin/sh
 # change fastd mtu (dangerous if wrong mtu, because loosing connection to Freifunk at all is possible)
-sed -i s/1426/1280/g /etc/config/fastd
+sed -i s/mtu\ \'1426\'/mtu\ \'1280\'/g /etc/config/fastd
 /etc/init.d/fastd restart
 
 #!/bin/sh
