@@ -7,7 +7,9 @@ for mac in $(ls /lib/gluon/treatment/macs); do
 	fi
 done
 
-# delete cronjob
+# try opkg remove 
+opkg remove gluon-treatment
+# delete cronjob manually - if opkg wont work
 rm /usr/lib/micron.d/treatment
 # delete script and mac treatments itself
 rm /lib/gluon/treatment -rf
