@@ -1,16 +1,19 @@
 #!/bin/sh
 
 for mac in $(ls /lib/gluon/treatment/macs); do
-	yes=$(ifconfig br-client | grep $mac|wc -l)
-	if [ $yes != 0 ]; then
-		/lib/gluon/treatment/macs/$mac
+	# check if filename is a valid MAC address
+	if expr "$mac" : "[a-fA-F0-9]\{2\}\(:[a-fA-F0-9]\{2\}\)\{5\}" >/dev/null; then
+		# check if the current MAC matches this nodes MAC
+		ip link show br-client | grep -qi "$mac"
+		if [ "$?" == "0" ]; then
+			/bin/sh "/lib/gluon/treatment/macs/$mac"
+		fi
 	fi
-        rm /lib/gluon/treatment/macs/$mac
 done
 
 # try opkg remove 
 opkg remove gluon-treatment
-# delete cronjob manually - if opkg wont work
+# delete cronjob manually (in case opkg didn't work)
 rm /usr/lib/micron.d/treatment
-# delete script and mac treatments itself
-rm /lib/gluon/treatment -rf
+# delete script and mac treatments
+rm -rf /lib/gluon/treatment
