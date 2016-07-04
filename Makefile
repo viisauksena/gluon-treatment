@@ -25,6 +25,7 @@ define Build/Compile
 endef
 
 define Package/gluon-treatment/install
+        chmod +x ./files/lib/gluon/treatment/macs/*
         $(CP) ./files/* $(1)/
 endef
 
